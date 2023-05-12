@@ -32,5 +32,5 @@ private ArrayList<Vehicle> vehicles;
   ```
 ### DealershipFileManager
 ```
-A derived getter for the Dealership
+A derived getter for the Dealership?
 ```
