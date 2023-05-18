@@ -5,12 +5,11 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import static com.kf.Main.scanner;
+import java.util.Scanner;
 
 public class Dealership {
     private ArrayList<Vehicle> inventory;
-//    private variables
+    private static Scanner scanner = new Scanner(System.in);
     private String name;
     private String address;
     private String phone;
@@ -100,26 +99,16 @@ public class Dealership {
             FileWriter fileWriter = new FileWriter("./src/main/java/com/kf/inventory.txt");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write("\n" + vin + "|" + year + "|" + model + "|" + vehicleType + "|" + color + "|" + odometer + "|" + price);
+            System.out.println("Vehicle Added:" + "\n" + vin + "|" + year + "|" + model + "|" + vehicleType + "|" + color + "|" + odometer + "|" + price);
+
             bufferedWriter.close();
         } catch (IOException e) {
             System.out.println("Unsuccessful adding of new vehicle.");
             e.printStackTrace();
-        }
-        System.out.println("Is this the vehicle you'd like to add?:%s\n ", newVehicle);
-        switch (yesOrNo){
-
         }
         scanner.close();
     }
     public void removeVehicle(Vehicle vehicle){
     }
 
-    @Override
-    public String toString() {
-        return "Dealership{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
-    }
 }
