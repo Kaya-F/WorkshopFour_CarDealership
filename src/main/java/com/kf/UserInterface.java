@@ -10,6 +10,7 @@ public class UserInterface {
     public UserInterface() {
     }
     private void init() {
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
     this.dealership = new Dealership("", "", "");
     }
 
