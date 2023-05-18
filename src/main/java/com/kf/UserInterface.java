@@ -22,18 +22,18 @@ public class UserInterface {
 
         do {
             System.out.println("Please Enter A Command: ");
-            System.out.println("\t1 Get All Vehicles ");
-            System.out.println("\t2 Get all Vehicles by Price ");
-            System.out.println("\t3");
-            System.out.println("\t4");
-            System.out.println("\t5");
-            System.out.println("\t6");
-            System.out.println("\t7");
-            System.out.println("\t8 Add a Vehicle");
-            System.out.println("\t9 Remove a Vehicle");
-            System.out.println("\t99 Exit");
+            System.out.println("\t[1] Search All Vehicles ");
+            System.out.println("\t[2] Search Vehicles by Price ");
+            System.out.println("\t[3] Search Vehicles by Make/Model ");
+            System.out.println("\t[4] Search Vehicles by Year ");
+            System.out.println("\t[5] Search Vehicles by Color ");
+            System.out.println("\t[6] Search Vehicles by Mileage");
+            System.out.println("\t[7] Search Vehicles by Type (Car, Truck, SUV, Van) ");
+            System.out.println("\t[8] Add a Vehicle ");
+            System.out.println("\t[9] Remove a Vehicle ");
+            System.out.println("\t[99] Exit ");
 
-            System.out.print("Command:");
+            System.out.print("Command: ");
             userInput = scanner.nextInt();
 
             switch(userInput) {
@@ -115,40 +115,40 @@ public class UserInterface {
     }
 
     public void processAddVehicleRequest(){
-        System.out.println("Provide The Following Car Information: ");
+        System.out.println("Provide The Following Car Information:");
 
-        System.out.print("VIN (Vehicle Identification Number):");
+        System.out.print("VIN (Vehicle Identification Number): ");
         int vin  = scanner.nextInt();
 
-        System.out.print("Year:");
+        System.out.print("Year: ");
         int year = scanner.nextInt();
 
-        System.out.print("Make:");
-        String make = scanner.nextLine();
+        System.out.print("Make: ");
+        String make = scanner.next();
 
-        System.out.print("Model:");
-        String model = scanner.nextLine();
+        System.out.print("Model: ");
+        String model = scanner.next();
 
-        System.out.print("Vehicle Type:");
-        String vehicleType = scanner.nextLine();
+        System.out.print("Vehicle Type: ");
+        String vehicleType = scanner.next();
 
-        System.out.print("Color:");
-        String color = scanner.nextLine();
+        System.out.print("Color: ");
+        String color = scanner.next();
 
-        System.out.print("Odometer:");
+        System.out.print("Odometer: ");
         int odometer = scanner.nextInt();
 
-        System.out.print("Price:");
+        System.out.print("Price: ");
         double price = scanner.nextDouble();
 
         this.dealership.addVehicle(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
         dealershipFileManager.saveDealership(this.dealership);
 
         try{
-            FileWriter fileWriter = new FileWriter("./src/main/java/com/kf/inventory.txt");
+            FileWriter fileWriter = new FileWriter("./src/main/java/com/kf/inventory.txt", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write("\n" + vin + "|" + year + "|" + model + "|" + vehicleType + "|" + color + "|" + odometer + "|" + price);
-            System.out.println("Vehicle Added:" + "\n" + vin + "|" + year + "|" + model + "|" + vehicleType + "|" + color + "|" + odometer + "|" + price);
+            bufferedWriter.write("\n" + vin + "|" + year + "|" + make + "|" + model + "|" + vehicleType + "|" + color + "|" + odometer + "|" + price);
+            System.out.println("Vehicle Added: " + vin + "  " + year + "  " + make + "  " + model + "  " + vehicleType + "  " + color + "  " + odometer + "  " + price);
 
             bufferedWriter.close();
         } catch (IOException e) {
