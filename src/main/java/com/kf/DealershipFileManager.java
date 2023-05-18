@@ -5,7 +5,6 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class DealershipFileManager {
-
     public Dealership getDealership() {
 
         try {
@@ -13,26 +12,38 @@ public class DealershipFileManager {
             Scanner scanner = new Scanner(dealershipFile);
 
             String firstLine_dealershipData = scanner.nextLine();
-            String[] dealershipDataArray = firstLine_dealershipData.split(Pattern.quote("|"));
-            System.out.println("Dealership Data: " + firstLine_dealershipData);
+            String[] dealershipDataArr = firstLine_dealershipData.split(Pattern.quote("|"));
+            Dealership initialDealership = new Dealership(dealershipDataArr[0],dealershipDataArr[1],dealershipDataArr[2]);
 
+            String vehicleData;
+            while (scanner.hasNextLine()) {
+                vehicleData = scanner.nextLine();
+                String[] vehicleDataArr = vehicleData.split(Pattern.quote("|"));
 
-//            String vehicleData;
-//            while (scanner.hasNextLine()) {
-//                vehicleData = scanner.nextLine();
-//                System.out.println("Vehicle: " + vehicleData);
-//            }
+                Vehicle currentVehicle = new Vehicle(
+                        Integer.parseInt(vehicleDataArr[0]),
+                        Integer.parseInt(vehicleDataArr[1]),
+                        vehicleDataArr[2],
+                        vehicleDataArr[3],
+                        vehicleDataArr[4],
+                        vehicleDataArr[5],
+                        Integer.parseInt(vehicleDataArr[6]),
+                        Double.parseDouble(vehicleDataArr[7])
+                );
+
+                initialDealership.addVehicle(currentVehicle);
+            }
 
             scanner.close();
-            return new Dealership("", "", "");
+            return initialDealership;
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
-
     public void saveDealership(Dealership dealership) {
-        // Write dealership information to an external file
     }
 }
 
+// System.out.println("Dealership Data: " + firstLine_dealershipData);
+// System.out.println("Vehicle: " + vehicleData);

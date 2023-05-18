@@ -1,4 +1,14 @@
-D & B Used Cars|111 Old Benbrook Rd|817-555-5555
+Bo's Garage|111 Jones Creek|318-555-5555
 10112|1993|Ford|Explorer|SUV|Red|525123|995.00
 37846|2001|Ford|Ranger|truck|Yellow|172544|1995.00
 44901|2012|Honda|Civic|SUV|Gray|103221|6995.00
+55028|2016|Toyota|Corolla|Sedan|Black|65000|10500.00
+76239|2015|Ford|Focus|Hatchback|Red|87654|8500.00
+89312|2019|Chevrolet|Malibu|Sedan|Silver|32000|15000.00
+66784|2014|Nissan|Altima|Sedan|White|59000|9500.00
+93502|2017|Hyundai|Elantra|Sedan|Blue|42000|11500.00
+77451|2018|Volkswagen|Jetta|Sedan|Gray|38000|12500.00
+61273|2013|BMW|328i|Sedan|Black|71000|15500.00
+94782|2020|Mercedes-Benz|C300|Sedan|White|25000|30000.00
+52934|2017|Audi|A4|Sedan|Silver|48000|22000.00
+88123|2015|Kia|Optima|Sedan|Red|56000|9000.00
