@@ -143,21 +143,32 @@ public class UserInterface {
 
         this.dealership.addVehicle(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
         dealershipFileManager.saveDealership(this.dealership);
+        System.out.println("Vehicle Added: " + vin + "  " + year + "  " + make + "  " + model + "  " + vehicleType + "  " + color + "  " + odometer + "  " + price);
 
-        try{
-            FileWriter fileWriter = new FileWriter("./src/main/java/com/kf/inventory.txt", true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write("\n" + vin + "|" + year + "|" + make + "|" + model + "|" + vehicleType + "|" + color + "|" + odometer + "|" + price);
-            System.out.println("Vehicle Added: " + vin + "  " + year + "  " + make + "  " + model + "  " + vehicleType + "  " + color + "  " + odometer + "  " + price);
-
-            bufferedWriter.close();
-        } catch (IOException e) {
-            System.out.println("Unsuccessful adding of new vehicle.");
-            e.printStackTrace();
-        }
+//        try{
+//            FileWriter fileWriter = new FileWriter("./src/main/java/com/kf/inventory.txt", true);
+//            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+//            bufferedWriter.write("\n" + vin + "|" + year + "|" + make + "|" + model + "|" + vehicleType + "|" + color + "|" + odometer + "|" + price);
+//            System.out.println("Vehicle Added: " + vin + "  " + year + "  " + make + "  " + model + "  " + vehicleType + "  " + color + "  " + odometer + "  " + price);
+//
+//            bufferedWriter.close();
+//        } catch (IOException e) {
+//            System.out.println("Unsuccessful adding of new vehicle.");
+//            e.printStackTrace();
+//        }
     }
 
     public void processRemoveVehicleRequest(){
+        System.out.println("Please enter the vehicle number you want to remove");
+        ArrayList<Vehicle> allVehicles = this.dealership.getAllVehicles();
+        for(int i=0; i<allVehicles.size();i++){
+            System.out.println((i+1) + " " + allVehicles.get(i).toString());
+        }
+
+        int chosenVehicle = scanner.nextInt();
+
+        this.dealership.removeVehicle(chosenVehicle-1);
+        dealershipFileManager.saveDealership(this.dealership);
         System.out.println("Removing Vehicle From Catalogue...");
 
     }

@@ -5,6 +5,8 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class DealershipFileManager {
+    String dealershipFileLocation = "./src/main/java/com/kf/inventory.txt";
+
     public Dealership getDealership() {
 
         try {
@@ -32,6 +34,7 @@ public class DealershipFileManager {
                 );
 
                 initialDealership.addVehicle(currentVehicle);
+
             }
 
             scanner.close();
@@ -41,7 +44,34 @@ public class DealershipFileManager {
             throw new RuntimeException(e);
         }
     }
+
     public void saveDealership(Dealership dealership) {
+
+        try {
+            FileWriter fileWriter = new FileWriter(dealershipFileLocation);
+
+            fileWriter.write(dealership.getName() + "|" + dealership.getAddress() + "|" + dealership.getPhone());
+
+            for (Vehicle vehicle: dealership.getAllVehicles()){
+                fileWriter.write(
+                        vehicle.getVin() + "|" +
+                        vehicle.getYear() + "|" +
+                        vehicle.getMake() + "|" +
+                        vehicle.getModel() + "|" +
+                        vehicle.getVehicleType() + "|" +
+                        vehicle.getColor() + "|" +
+                        vehicle.getOdometer() + "|" +
+                        vehicle.getPrice()
+                );
+
+
+            }
+            fileWriter.close();
+        } catch (Exception e) {
+            System.out.println("Unsuccessful adding of new vehicle.");
+            throw new RuntimeException(e);
+        }
+
     }
 }
 

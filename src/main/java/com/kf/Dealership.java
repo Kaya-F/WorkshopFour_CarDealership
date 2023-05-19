@@ -63,7 +63,8 @@ public class Dealership {
     public void addVehicle(Vehicle vehicle){
         this.inventory.add(vehicle);
     }
-    public void removeVehicle(Vehicle vehicle){
+    public void removeVehicle(int vehicleIndex){
+        this.inventory.remove(vehicleIndex);
     }
 
     @Override
